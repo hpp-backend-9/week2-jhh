@@ -13,12 +13,8 @@ public class LectureService {
 
     public LectureDto getLecture(Long lectureId) {
 
-        LectureDto lecture = lectureRepository.getLecture(lectureId);
-        if (lecture == null) {
-           throw new RuntimeException("유효하지 않은 강의입니다.");
-        }
-
-        return lecture;
+        return lectureRepository.getLecture(lectureId)
+                .orElseThrow(() -> new RuntimeException("유효하지 않은 강의입니다."));
     }
 
 }

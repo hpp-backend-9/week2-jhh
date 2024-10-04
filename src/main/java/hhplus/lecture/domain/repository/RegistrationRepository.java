@@ -1,9 +1,14 @@
 package hhplus.lecture.domain.repository;
 
+import hhplus.lecture.domain.dto.RegistrationDto;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Optional;
+
 public interface RegistrationRepository {
 
-    void register(Long userId, Long lectureId);
+    Optional<RegistrationDto> checkDuplicate(Long userId, Long scheduleId);
+
+    void save(Long userId, Long scheduleId);
+
 }
